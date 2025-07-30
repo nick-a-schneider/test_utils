@@ -129,6 +129,11 @@
         LOG_ERROR("ASSERT_" cond_str ": [%s] :: " msg "\n", #expression, ##__VA_ARGS__);\
     }
 
+#define ASSERT_NULL(expression, msg)  ASSERT_BOOL__( , "NULL", expression, msg)
+#define ASSERT_NOT_NULL(expression, msg)  ASSERT_BOOL__( , "NOT_NULL", !(expression), msg)
+#define ASSERT_TRUE(expression, msg)  ASSERT_BOOL__(!, "TRUE", expression, msg)
+#define ASSERT_FALSE(expression, msg) ASSERT_BOOL__( , "FALSE", expression, msg)
+
 /**
  * @brief Assert that a condition is true
  * 
