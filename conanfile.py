@@ -4,6 +4,12 @@ from conan.tools.files import copy
 class TestUtilsConan(ConanFile):
     name = "test_utils"
     version = "1.0"
+    license = "MIT"
+    scm = {
+        "type": "git",
+        "url": "https://github.com/nick-a-schneider/test_utils.git",
+        "revision": "auto"  # automatically uses current commit hash
+    }
     package_type = "header-library"
     exports_sources = "include/*"
     no_copy_source = True
