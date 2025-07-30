@@ -1,13 +1,24 @@
 cmake_minimum_required(VERSION 3.15)
-project(test_utils CXX)
+project(test_utils LANGUAGES C)
 
+add_library(test_utils INTERFACE)
 
+target_include_directories(test_utils INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
 
+add_library(test_utils::test_utils ALIAS test_utils)
 
-add_library(test_utils src/test_utils.cpp)
-target_include_directories(test_utils PUBLIC include)
+install(TARGETS test_utils
+    EXPORT test_utilsTargets
+    INCLUDES DESTINATION include
+)
 
+install(DIRECTORY include/ DESTINATION include)
 
-
-set_target_properties(test_utils PROPERTIES PUBLIC_HEADER "include/test_utils.h")
-install(TARGETS test_utils)
+install(EXPORT test_utilsTargets
+    FILE test_utilsTargets.cmake
+    NAMESPACE test_utils::
+    DESTINATION lib/cmake/test_utils
+)
