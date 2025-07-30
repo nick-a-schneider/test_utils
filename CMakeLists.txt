@@ -8,8 +8,6 @@ target_include_directories(test_utils INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-add_library(test_utils::test_utils ALIAS test_utils)
-
 install(TARGETS test_utils
     EXPORT test_utilsTargets
     INCLUDES DESTINATION include
