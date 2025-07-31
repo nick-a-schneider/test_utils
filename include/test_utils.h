@@ -255,6 +255,18 @@
         ASSERT_EQUAL_CHAR((a)[i], (b)[i], msg, ##__VA_ARGS__);  \
     }
 
+#define ASSERT_EQUAL_STR(a, b, len, msg, ...)                           \
+    do {                                                                \
+        bool _equal = true;                                             \
+        for (int _i = 0; _i < (len); _i++) {                            \
+            if ((a)[_i] != (b)[_i]) {                                   \
+                _equal = false;                                         \
+                break;                                                  \
+            }                                                           \
+        }                                                               \
+        ASSERT_BOOL__(!, "EQUAL_STR", _equal, msg, ##__VA_ARGS__);      \
+    } while (0)
+
 /**
  * @brief Assert that two strings are not equal: `a != b`
  * 
@@ -266,11 +278,17 @@
  * @param msg The message to print
  * @param (optional) ... The arguments to format the message
  */
-#define ASSERT_NOT_EQUAL_STR(a, b, len, msg, ...)                   \
-    for (int i = 0; i < (len); i++) {                               \
-        ASSERT_NOT_EQUAL_CHAR((a)[i], (b)[i], msg, ##__VA_ARGS__);  \
-    }
-
+#define ASSERT_NOT_EQUAL_STR(a, b, len, msg, ...)                       \
+    do {                                                                \
+        bool _equal = true;                                             \
+        for (int _i = 0; _i < (len); _i++) {                            \
+            if ((a)[_i] != (b)[_i]) {                                   \
+                _equal = false;                                         \
+                break;                                                  \
+            }                                                           \
+        }                                                               \
+        ASSERT_BOOL__(, "NOT_EQUAL_STR", _equal, msg, ##__VA_ARGS__);   \
+    } while (0)
 /* -- Global Variables ----------------------------------------------------- */
 
 bool test_failed = false; // status of the entire test suite.
