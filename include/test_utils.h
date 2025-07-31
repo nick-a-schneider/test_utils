@@ -131,8 +131,6 @@
 
 #define ASSERT_NULL(expression, msg)  ASSERT_BOOL__( , "NULL", expression, msg)
 #define ASSERT_NOT_NULL(expression, msg)  ASSERT_BOOL__( , "NOT_NULL", !(expression), msg)
-#define ASSERT_TRUE(expression, msg)  ASSERT_BOOL__(!, "TRUE", expression, msg)
-#define ASSERT_FALSE(expression, msg) ASSERT_BOOL__( , "FALSE", expression, msg)
 
 /**
  * @brief Assert that a condition is true
@@ -250,11 +248,6 @@
  * @param msg The message to print
  * @param (optional) ... The arguments to format the message
  */
-#define ASSERT_EQUAL_STR(a, b, len, msg, ...)                   \
-    for (int i = 0; i < (len); i++) {                           \
-        ASSERT_EQUAL_CHAR((a)[i], (b)[i], msg, ##__VA_ARGS__);  \
-    }
-
 #define ASSERT_EQUAL_STR(a, b, len, msg, ...)                           \
     do {                                                                \
         bool _equal = true;                                             \
