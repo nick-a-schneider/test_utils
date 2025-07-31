@@ -282,6 +282,14 @@
         }                                                               \
         ASSERT_BOOL__(, "NOT_EQUAL_STR", _equal, msg, ##__VA_ARGS__);   \
     } while (0)
+
+/* -- typedefs --------------------------------------------------------------*/
+
+typedef struct {
+    bool flag;
+    uint64_t data;
+    uint32_t* ptr;
+} TestStruct;
 /* -- Global Variables ----------------------------------------------------- */
 
 bool test_failed = false; // status of the entire test suite.
