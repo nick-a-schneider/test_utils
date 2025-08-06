@@ -110,6 +110,11 @@
     LOG_WARN("NOT IMPLEMENTED\n");  \
     decDepth();                     \
 
+#define CASE_KNOWN_ISSUE            \
+    printIndent();                  \
+    LOG_DEBUG("KNOWN ISSUE\n");     \
+    decDepth();                     \
+
 
 /* -- Assertions ----------------------------------------------------------*/
 /**
