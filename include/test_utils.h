@@ -220,6 +220,17 @@
 #define ASSERT_NOT_EQUAL_INT(a, b, msg, ...)    \
     ASSERT_EQUAL__(==, "NOT_", "d", a, b, msg, ##__VA_ARGS__)
 
+ /**
+ * @brief Assert that a <= b
+ * 
+ * @param a The first integer
+ * @param b The second integer
+ * @param msg The message to print
+ * @param (optional) ... The arguments to format the message
+ */
+#define ASSERT_LT_INT(a, b, msg, ...)    \
+    ASSERT_EQUAL__(>, "LT_", "d", a, b, msg, ##__VA_ARGS__)
+
 /**
  * @brief Assert that two characters are equal: `a == b`
  * 
